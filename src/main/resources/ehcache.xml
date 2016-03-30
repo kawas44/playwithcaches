@@ -1,0 +1,20 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd"
+         updateCheck="false" monitoring="off"
+         dynamicConfig="false">
+
+    <diskStore path="java.io.tmpdir/ehcaches"/>
+
+    <cache name="x-data"
+           eternal="false"
+           maxEntriesLocalHeap="5"
+           maxEntriesLocalDisk="10"
+           timeToIdleSeconds="4"
+           timeToLiveSeconds="0"
+           memoryStoreEvictionPolicy="LRU">
+        <persistence strategy="localTempSwap"/>  <!-- none, localTempSwap -->
+        <cacheEventListenerFactory class="kws.ehcache.CacheLoggerFactory"
+                                   listenFor="local" />
+    </cache>
+
+</ehcache>
